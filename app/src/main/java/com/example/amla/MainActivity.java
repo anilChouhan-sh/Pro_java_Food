@@ -18,7 +18,7 @@ import com.parse.SaveCallback;
 
 public class MainActivity extends AppCompatActivity {
     public void signupclicked(View view) {
-        TextView username = findViewById(R.id.username);
+        TextView username = findViewById(R.id.use);
         EditText usernamep = findViewById(R.id.userpassword);
     }
 
@@ -26,6 +26,38 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Parse.enableLocalDatastore(this);
+
+        Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
+                .applicationId("hello")
+                .clientKey("world")
+                .server("http://3.14.14.145/")
+                .build()
+        );
+
+        ParseObject object = new ParseObject("ExampleObject");
+        object.put("myNumber", "123");
+        object.put("myString", "rob");
+
+        object.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException ex) {
+                if (ex == null) {
+                    Log.i("Parse Result", "Successful!");
+                } else {
+                    Log.i("Parse Result", "Failed" + ex.toString());
+                }
+            }
+        });
+
+
+        ParseUser.enableAutomaticUser();
+
+        ParseACL defaultACL = new ParseACL();
+        defaultACL.setPublicReadAccess(true);
+        defaultACL.setPublicWriteAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
+
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
     }
