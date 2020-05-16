@@ -22,7 +22,7 @@ public class Starterapplication extends Application {
 
         Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
                 .applicationId("hello")
-                .clientKey("world")
+                .clientKey("")
                 .server("")
                 .build()
         );
