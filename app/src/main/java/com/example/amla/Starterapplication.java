@@ -21,7 +21,7 @@ public class Starterapplication extends Application {
         Parse.enableLocalDatastore(this);
 
         Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
-                .applicationId("hello")
+                .applicationId("")
                 .clientKey("")
                 .server("")
                 .build()
