@@ -29,15 +29,15 @@ public class MainActivity extends AppCompatActivity {
         Parse.enableLocalDatastore(this);
 
         Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
-                .applicationId("hello")
-                .clientKey("world")
-                .server("http://3.14.14.145/")
+                .applicationId("myappID")
+                .clientKey("XK7uJu20XURA")
+                .server("http://3.14.14.145/parse")
                 .build()
         );
 
         ParseObject object = new ParseObject("ExampleObject");
         object.put("myNumber", "123");
-        object.put("myString", "rob");
+        object.put("myString", "lucky");
 
         object.saveInBackground(new SaveCallback() {
             @Override
