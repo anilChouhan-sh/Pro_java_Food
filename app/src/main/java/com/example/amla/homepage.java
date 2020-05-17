@@ -21,9 +21,9 @@ public class homepage extends AppCompatActivity {
         BottomNavigationView buttomNavigationView = findViewById(R.id.bottomNavigationView);
 
         //set
-        buttomNavigationView.setSelectedItemId(R.id.listFood);
+       // buttomNavigationView.setSelectedItemId(R.id.listFood);
 
-        NavController navController = Navigation.findNavController(this,R.id.bottomNavigationView);
+        NavController navController = Navigation.findNavController(this,R.id.fragment);
         NavigationUI.setupWithNavController(buttomNavigationView,navController);
 
     }

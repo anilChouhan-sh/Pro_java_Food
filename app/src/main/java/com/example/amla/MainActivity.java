@@ -103,6 +103,8 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         login = findViewById(R.id.login);
         login.setOnClickListener(this);
 
+        ParseUser.logOut();
+
         if(ParseUser.getCurrentUser() != null) {
             showhomepage();
         }
