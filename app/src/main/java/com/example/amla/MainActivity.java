@@ -2,6 +2,7 @@ package com.example.amla;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,6 +25,11 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
     Boolean signupmodeactive = true;
     TextView login;
+
+    public void showhomepage () {
+        Intent intent = new Intent(getApplicationContext() , homepage.class);
+        startActivity(intent);
+    }
 
     @Override
     public void onClick(View view) {
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                     public void done(ParseException e) {
                         if (e == null) {
                             Log.i("Signup", "sucess");
+                            showhomepage();
                         } else {
                             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -69,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
                     public void done(ParseUser user, ParseException e) {
                         if(user != null) {
                             Log.i("login","sucess");
+                            showhomepage();
                         }else {
                             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                         }
@@ -94,6 +102,10 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
 
         login = findViewById(R.id.login);
         login.setOnClickListener(this);
+
+        if(ParseUser.getCurrentUser() != null) {
+            showhomepage();
+        }
 
 
 

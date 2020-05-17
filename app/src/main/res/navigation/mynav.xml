@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mynav"
+    app:startDestination="@id/listFood">
+
+    <fragment
+        android:id="@+id/listFood"
+        android:name="com.example.amla.ListFood"
+        android:label="fragment_list_food"
+        tools:layout="@layout/fragment_list_food" />
+    <fragment
+        android:id="@+id/search"
+        android:name="com.example.amla.Search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/myProfile"
+        android:name="com.example.amla.MyProfile"
+        android:label="fragment_my_profile"
+        tools:layout="@layout/fragment_my_profile" />
+</navigation>
