@@ -90,7 +90,7 @@
         android:textSize="22sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/signupbutton"
         app:layout_constraintTop_toBottomOf="@+id/userpassword"
         app:layout_constraintVertical_bias="0.0" />
