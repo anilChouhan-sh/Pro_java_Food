@@ -42,6 +42,8 @@ public class ListFood extends Fragment {
   final ListView listView = view.findViewById(R.id.listview);
 
         final ArrayList<String> resto_name   = new ArrayList<String>();
+
+        //i changed this
         final ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,resto_name);
 
 
