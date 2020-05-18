@@ -11,7 +11,7 @@
         android:label="fragment_list_food"
         tools:layout="@layout/fragment_list_food" />
     <fragment
-        android:id="@+id/search"
+        android:id="@+id/searchs"
         android:name="com.example.amla.Search"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />

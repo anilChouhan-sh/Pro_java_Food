@@ -2,6 +2,8 @@ package com.example.amla;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -22,60 +24,25 @@ import java.util.List;
 import javax.xml.transform.Result;
 
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ListFood#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class ListFood extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public ListFood() {
-        // Required empty public constructor
-    }
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ListFood.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ListFood newInstance(String param1, String param2) {
-        ListFood fragment = new ListFood();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+
+    @Override
+    public View onCreateView( LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_list_food, container, false);
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.fragment_list_food, container, false);
-        final ListView listView = view.findViewById(R.id.listview);
 
-        final ArrayList<String> resto_name= new ArrayList<>();
+  final ListView listView = view.findViewById(R.id.listview);
 
+        final ArrayList<String> resto_name   = new ArrayList<String>();
+        final ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,resto_name);
 
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Restaurants");
@@ -87,17 +54,20 @@ public class ListFood extends Fragment {
                         for(ParseObject object : objects) {
                             Log.i("Resto_name", object.getString("Resto_name"));
                             try {
-                                resto_name.add(object.getList("Resto_name").toString());
+                                resto_name.add(object.getString("Resto_name"));
                             }catch (Exception ex){
-                                ex.printStackTrace();
+                                //ex.printStackTrace();
                             }
                         }
                     }
-                    ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,resto_name);
+
                     listView.setAdapter(arrayAdapter);
+                }
+
+                else {Log.i("parse exception " , e.getMessage());
                 }
             }
         });
-        return view;
+
     }
 }
