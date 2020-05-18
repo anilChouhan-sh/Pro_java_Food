@@ -32,6 +32,13 @@ public class cart extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+
+   /* LayoutInflater x = new LayoutInflater(view.) {
+        @Override
+        public LayoutInflater cloneInContext(Context newContext) {
+            return null;
+        }
+    };*/
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);

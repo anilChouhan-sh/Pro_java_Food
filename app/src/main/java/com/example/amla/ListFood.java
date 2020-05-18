@@ -65,7 +65,7 @@ public class ListFood extends Fragment {
 
                     listView.setAdapter(arrayAdapter);
                 }
-
+                ////chnged
                 else {Log.i("parse exception " , e.getMessage());
                 }
             }
