@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
 
@@ -12,6 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 public class Search extends Fragment   {
+
+    SearchView search ;
+    Button desert , lunch , dinner , snack ;
 
 
     @Override
@@ -27,13 +31,13 @@ public class Search extends Fragment   {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         SearchView s = ( SearchView )view.findViewById(R.id.searchs);
-       final TextView t = (TextView) view.findViewById(R.id.output);
+
 
         s.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
 
-                t.setText(query);
+
                 return false;
             }
 

@@ -16,5 +16,8 @@
         android:id="@+id/searchs"
         android:title="Search"
         android:icon="@drawable/ic_search_black_24dp"/>
-
+    <item
+        android:id="@+id/maincart"
+        android:title="Cart"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"/>
 </menu>

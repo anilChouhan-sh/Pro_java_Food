@@ -20,4 +20,10 @@
         android:name="com.example.amla.MyProfile"
         android:label="fragment_my_profile"
         tools:layout="@layout/fragment_my_profile" />
+    <fragment
+        android:id="@+id/cart"
+        android:name="com.example.amla.cart"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart"
+        />
 </navigation>
