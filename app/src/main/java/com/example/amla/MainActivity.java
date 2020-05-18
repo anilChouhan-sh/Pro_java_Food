@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -103,7 +104,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
         login = findViewById(R.id.login);
         login.setOnClickListener(this);
 
-        ParseUser.logOut();
+        //ParseUser.logOut();
 
         if(ParseUser.getCurrentUser() != null) {
             showhomepage();

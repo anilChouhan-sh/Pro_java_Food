@@ -8,6 +8,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -25,6 +26,7 @@ public class homepage extends AppCompatActivity {
 
         NavController navController = Navigation.findNavController(this,R.id.fragment);
         NavigationUI.setupWithNavController(buttomNavigationView,navController);
+        ListView listView =findViewById(R.id.listview);
 
     }
 
