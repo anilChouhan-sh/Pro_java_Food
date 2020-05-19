@@ -1,5 +1,6 @@
 package com.example.amla;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -60,5 +61,10 @@ public class MyProfile extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_my_profile, container, false);
+    }
+
+    public void clicked_on_address(View view) {
+        Intent intent = new Intent(getContext(), User_address.class);
+        startActivity(intent);
     }
 }
