@@ -26,7 +26,6 @@ public class homepage extends AppCompatActivity {
 
         NavController navController = Navigation.findNavController(this,R.id.fragment);
         NavigationUI.setupWithNavController(buttomNavigationView,navController);
-        ListView listView =findViewById(R.id.listview);
 
     }
 

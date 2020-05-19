@@ -1,5 +1,6 @@
 package com.example.amla;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -39,13 +41,21 @@ public class ListFood extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
 
-  final ListView listView = view.findViewById(R.id.listview);
+    final ListView listView = view.findViewById(R.id.listview);
 
-        final ArrayList<String> resto_name   = new ArrayList<String>();
+    final ArrayList<String> resto_name   = new ArrayList<String>();
 
-        //i changed this
+    //i changed this
         final ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(),android.R.layout.simple_list_item_1,resto_name);
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(),Restaurant_Info.class);
+                intent.putExtra("Resto_name",resto_name.get(position));
+                startActivity(intent);
+            }
+        });
 
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Restaurants");
         query.addAscendingOrder("Restaurants");
@@ -70,6 +80,7 @@ public class ListFood extends Fragment {
                 }
             }
         });
+
 
     }
 }
