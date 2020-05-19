@@ -5,9 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.SearchView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -83,7 +80,7 @@ public class Search extends Fragment   {
 
         placeorder = view.findViewById(R.id.placeorder);
 
-        Recycle_adapter adapter = new Recycle_adapter(view.getContext() );
+        Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() );
         recyclerView.setAdapter(adapter);
 
     }

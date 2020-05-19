@@ -9,14 +9,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
-public class Recycle_adapter extends RecyclerView.Adapter<Recycle_adapter.Viewholder>{
+public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_cart.Viewholder>{
 
 
         private Context con  ;
        // ArrayList<String> s ;
-    public Recycle_adapter(Context con) {
+    public Recycle_adapter_cart(Context con) {
 
         this.con = con;
         //this.s = s;
@@ -44,7 +42,7 @@ public class Recycle_adapter extends RecyclerView.Adapter<Recycle_adapter.Viewho
         return 5    ;
     }
 
-    class Viewholder  extends RecyclerView.ViewHolder{
+    protected  class Viewholder  extends RecyclerView.ViewHolder{
             TextView food_price , food_name , food_quantity;
 
         public Viewholder(@NonNull View itemView) {
