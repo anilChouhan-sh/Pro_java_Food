@@ -3,31 +3,33 @@ package com.example.amla;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.QuickViewConstants;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+
 import android.os.Bundle;
 import android.util.Log;
-import android.view.ViewGroup;
+
 import android.widget.ImageView;
-import android.widget.LinearLayout;
+import android.widget.TextView;
+
 
 import com.parse.FindCallback;
-import com.parse.GetDataCallback;
-import com.parse.Parse;
+
+
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.squareup.picasso.Picasso;
+
 
 import java.util.List;
-import java.util.Queue;
+
 
 public class Restaurant_Info extends AppCompatActivity {
 
-    LinearLayout linlayout;
 
-   // ImageView imageView =findViewById(R.id.imageView2);
+
+    ImageView imageView ;
+    TextView view_resto_name;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,40 +38,39 @@ public class Restaurant_Info extends AppCompatActivity {
         Intent intent = getIntent();
         final String resto_name =intent.getStringExtra("Resto_name");
         Log.i("name" , resto_name);
-        //linlayout = findViewById(R.id.linlayout);
+        imageView = findViewById(R.id.profile);
+        view_resto_name=findViewById(R.id.Resto_name);
+        final List<ParseObject>[] list = new List[]{null};
 
-     /*  ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("Restaurants");
+        ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("Restaurants");
         query1.whereEqualTo("Resto_name",resto_name);
-
         query1.findInBackground(new FindCallback<ParseObject>() {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if(e==null){
+                    list[0] = objects;
+
                     for(ParseObject object : objects){
-                        Log.i("info", "image found!");
+
                         ParseFile file = (ParseFile) object.get("image");
-                        file.getDataInBackground(new GetDataCallback() {
-                            @Override
-                            public void done(byte[] data, ParseException e) {
-                                if (e == null ) {
 
-                                    Bitmap bitmapImage = BitmapFactory.decodeByteArray(data, 0, data.length);
 
-                                    imageView.setImageBitmap(bitmapImage);
-                                    //image.setImageDrawable(getResources().getDrawable(R.drawable.pic));
-                                  //  linlayout.addView(imageView);
-                                } else {
-                                    Log.i("info", e.getMessage());
-                                }
-                            }
-                        });
+                        String fileUrl = file.getUrl();
+                        Log.i("info", fileUrl);
+                        String [] arr = fileUrl.split("/" , 4) ;
+                        String actual_url = "http://13.58.7.86/"  +  arr[3];
+                        Log.i("actual url" , actual_url) ;
+                        Picasso.get().load(actual_url).into(imageView);
+                        view_resto_name.setText(object.getString("Resto_name"));
+
                     }
                 }else {
-                    Log.i("info", e.getMessage());
+                    Log.i("infoout", e.getMessage());
                 }
             }
-        });*/
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Food");
+        });
+
+     /*   ParseQuery<ParseObject> query = ParseQuery.getQuery("Food");
         query.addAscendingOrder("Food");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
@@ -114,6 +115,16 @@ public class Restaurant_Info extends AppCompatActivity {
                 else {Log.i("parse exception " , e.getMessage());
                 }
             }
-        });
+        });*/
+
+
+
+
+
+
+
+
     }
-}
+
+    }
+
