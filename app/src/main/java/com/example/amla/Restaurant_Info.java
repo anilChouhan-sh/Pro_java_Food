@@ -27,7 +27,7 @@ public class Restaurant_Info extends AppCompatActivity {
 
     LinearLayout linlayout;
 
-    ImageView imageView =findViewById(R.id.imageView2);
+   // ImageView imageView =findViewById(R.id.imageView2);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +35,10 @@ public class Restaurant_Info extends AppCompatActivity {
 
         Intent intent = getIntent();
         final String resto_name =intent.getStringExtra("Resto_name");
-        linlayout = findViewById(R.id.linlayout);
+        Log.i("name" , resto_name);
+        //linlayout = findViewById(R.id.linlayout);
 
-       ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("Restaurants");
+     /*  ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("Restaurants");
         query1.whereEqualTo("Resto_name",resto_name);
 
         query1.findInBackground(new FindCallback<ParseObject>() {
@@ -56,7 +57,7 @@ public class Restaurant_Info extends AppCompatActivity {
 
                                     imageView.setImageBitmap(bitmapImage);
                                     //image.setImageDrawable(getResources().getDrawable(R.drawable.pic));
-                                    linlayout.addView(imageView);
+                                  //  linlayout.addView(imageView);
                                 } else {
                                     Log.i("info", e.getMessage());
                                 }
@@ -67,8 +68,8 @@ public class Restaurant_Info extends AppCompatActivity {
                     Log.i("info", e.getMessage());
                 }
             }
-        });
-        /*ParseQuery<ParseObject> query = ParseQuery.getQuery("Food");
+        });*/
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Food");
         query.addAscendingOrder("Food");
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
@@ -90,9 +91,9 @@ public class Restaurant_Info extends AppCompatActivity {
                 else {Log.i("parse exception " , e.getMessage());
                 }
             }
-        });*/
-        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Restaurant");
-        query2.whereEqualTo("Resto_owner",resto_name);
+        });
+        ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Restaurants");
+        query2.whereEqualTo("Resto_name",resto_name);
         query2.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> objects, ParseException e) {
                 if (e == null) {
@@ -102,11 +103,11 @@ public class Restaurant_Info extends AppCompatActivity {
                             try {
                                 // resto_name.add(object.getString("Resto_name"));
                             }catch (Exception ex){
-                                //ex.printStackTrace();
+                                ex.printStackTrace();
                             }
                         }
                     }
-
+                    else { Log.i("msgggggg" , "NO object");}
                     //listView.setAdapter(arrayAdapter);
                 }
                 ////chnged
