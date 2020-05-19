@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout_1"
         android:layout_marginTop="30dp"
-        android:onClick="clicked_on_address"
+        android:clickable="false"
         android:orientation="horizontal">
 
         <ImageView
