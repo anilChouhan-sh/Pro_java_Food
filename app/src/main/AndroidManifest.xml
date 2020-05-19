@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".User_address"></activity>
+        <activity android:name=".Past_orders"></activity>
+        <activity android:name=".User_address" />
         <activity android:name=".Restaurant_Info" />
         <activity android:name=".homepage" />
         <activity android:name=".MainActivity">
