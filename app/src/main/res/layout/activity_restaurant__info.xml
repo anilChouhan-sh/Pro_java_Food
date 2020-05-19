@@ -7,35 +7,48 @@
     tools:context=".Restaurant_Info"
     tools:layout_editor_absoluteY="81dp" >
 
-    <TextView
-        android:id="@+id/Resto_name"
+    <RelativeLayout
+        android:id="@+id/photo_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:layout_below="@android:id/title"
-        android:text="Restuarant Name"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        />
+        >
 
-    <ImageView
-        android:id="@+id/profile"
-        android:layout_width="wrap_content"
-        android:layout_height="128dp"
-        android:layout_weight="1"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/Resto_name"
+        <TextView
+            android:id="@+id/Resto_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Restuarant Name"
+            android:layout_centerHorizontal="true"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-        app:srcCompat="@drawable/ic_launcher_background" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/profile"
-        android:layout_marginTop="05dp"
-        android:text="FOOD MENU:"
-        android:layout_marginLeft="10dp"
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="20dp"
+            android:layout_below="@+id/Resto_name"
+            android:layout_weight="1"
+
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@drawable/ic_launcher_background" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@+id/profile"
+            android:layout_marginTop="05dp"
+            android:text="FOOD MENU:" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/photo_layout"
+
         />
 
 

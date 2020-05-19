@@ -48,7 +48,6 @@ public class Restaurant_Info extends AppCompatActivity {
             @Override
             public void done(List<ParseObject> objects, ParseException e) {
                 if(e==null){
-                    list[0] = objects;
 
                     for(ParseObject object : objects){
 
