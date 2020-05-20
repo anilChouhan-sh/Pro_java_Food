@@ -57,27 +57,29 @@ public class User_address extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         //ParseQuery<ParseUser> query = new ParseQuery<ParseUser>()
 
-        ParseQuery  query = new ParseQuery("TP");
-        query.whereEqualTo("username" , "food");
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> objects, ParseException e) {
-                if(e==null && objects.size() >0 ) {
-                    for(ParseObject object : objects) {
-
-
-                        object.put("address", area.getText().toString());
-                               /* object.put("city", city.getText().toString());
-                                object.put("state", state.getText().toString());
-                                object.put("mobileNumber", mobile_number.getText().toString());
-                                object.put("pincode", pincode.getText().toString());*/
-
-                        object.saveInBackground();
+        //ParseQuery  query = new ParseQuery("User");
+        int i=0;
+        //query.whereEqualTo("username" , "food");
+        if(i==0) {
+            ParseObject saving = new ParseObject("info");
+            saving.put("username", ParseUser.getCurrentUser().getUsername());
+            saving.put("address", area.getText().toString());
+            saving.put("city", city.getText().toString());
+            saving.put("state", state.getText().toString());
+            saving.put("mobile_number", mobile_number.getText().toString());
+            saving.put("pincode", pincode.getText().toString());
+            saving.saveInBackground(new SaveCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        Toast.makeText(User_address.this, "Address Saved", Toast.LENGTH_SHORT).show();
                     }
-                    Toast.makeText(User_address.this, "Sucess", Toast.LENGTH_SHORT).show();
                 }
-            }
-        });
+            });
+            i++;
+        }else {
+            Toast.makeText(User_address.this,"Address already saved",Toast.LENGTH_SHORT).show();
+        }
     }
 
 }
