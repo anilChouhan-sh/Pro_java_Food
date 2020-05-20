@@ -61,7 +61,7 @@ public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapt
 
 
         holder.name_food.setText(hash.get("Food_name"));
-        holder.price_food.setText(hash.get("Food_price"));
+        holder.price_food.setText("Rs. "+hash.get("Food_price"));
 
 
 
@@ -82,7 +82,7 @@ public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapt
             cart.put("Food_price" , Integer.valueOf(hash.get("Food_price")));
             cart.saveInBackground();
 
-            Toast.makeText( v.getContext() , String.valueOf(position) , Toast.LENGTH_SHORT).show();
+            Toast.makeText( v.getContext() , "ADDED To Cart" , Toast.LENGTH_SHORT).show();
         }
 
     @Override

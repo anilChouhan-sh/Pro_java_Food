@@ -8,11 +8,9 @@ import android.view.View;
 import android.widget.Button;
 
 import com.parse.FindCallback;
-import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
 
 import java.util.List;
 
@@ -23,7 +21,7 @@ public class servedscreen extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servedscreen);
-        Button home = findViewById(R.id.home);
+        Button home = findViewById(R.id.home33);
         ParseQuery<ParseObject> clean = ParseQuery.getQuery("Cart");
         clean.findInBackground(new FindCallback<ParseObject>() {
             @Override
