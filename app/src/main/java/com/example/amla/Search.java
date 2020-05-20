@@ -119,7 +119,12 @@ public class Search extends Fragment {
                 }
             }
         });
-
+       List<ParseObject> x;
+        try {
+            x=query.find();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         Log.i("nwetrew" ,"efwfe");
        //ArrayList x = adapter.list_of_food;
         Toast.makeText(getContext() , String.valueOf(this.list_of_food_incart) , Toast.LENGTH_LONG).show();
