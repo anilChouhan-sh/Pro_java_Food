@@ -30,6 +30,7 @@ public class MyProfile extends Fragment implements View.OnClickListener {
 
         LinearLayout address_layout  ,logout_layout  ,past_order;
         TextView name;
+        String username = ParseUser.getCurrentUser().getUsername();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,23 +62,9 @@ public class MyProfile extends Fragment implements View.OnClickListener {
        final String[] check = new String[1];
         if (v.getId() == R.id.linearLayout_2)
         {
-            ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("User");
-            query1.findInBackground(new FindCallback<ParseObject>() {
-                @Override
-                public void done(List<ParseObject> objects, ParseException e) {
-                    objects.contains("address");
-                    Log.i("sad ",objects.toString());
-                    check[0] =objects.toString();
-                }
-            });
-            if ( check[0] ==null) {
-                Intent intent = new Intent(getContext(), User_address.class);
-                startActivity(intent);
-            }else{
-                Log.i("abc","abc");
-            }
-
-
+            Intent intent = new Intent(getContext(), User_address.class);
+            intent.putExtra("username",username);
+            startActivity(intent);
             //adress
         }
 
