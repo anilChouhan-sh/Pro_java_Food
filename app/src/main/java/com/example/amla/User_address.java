@@ -3,6 +3,7 @@ package com.example.amla;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -23,9 +24,17 @@ public class User_address extends AppCompatActivity {
         pincode = findViewById(R.id.pincode);
         city =findViewById(R.id.city);
         state =findViewById(R.id.state);
+        button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
 
 
-        ParseUser user =ParseUser.getCurrentUser();
-       // user.put("");
+            @Override
+            public void onClick(View v) {
+                ParseUser user =ParseUser.getCurrentUser();
+                user.put("address" , area.getText());
+            }
+        });
+
+
     }
 }

@@ -5,6 +5,7 @@
     <item
         android:id="@+id/myProfile"
         android:title="MyProfile"
+
         android:icon="@drawable/ic_person_black_24dp"/>
 
 
@@ -14,8 +15,8 @@
         android:icon="@drawable/ic_home_black_24dp"/>
     <item
         android:id="@+id/searchs"
-        android:title="Search"
-        android:icon="@drawable/ic_search_black_24dp"/>
+        android:icon="@drawable/ic_search_black_24dp"
+        android:title="Search" />
     <item
         android:id="@+id/maincart"
         android:title="Cart"

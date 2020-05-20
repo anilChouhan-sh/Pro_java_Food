@@ -61,16 +61,16 @@ public class MyProfile extends Fragment implements View.OnClickListener {
        final String[] check = new String[1];
         if (v.getId() == R.id.linearLayout_2)
         {
-            ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("user");
+            ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("User");
             query1.findInBackground(new FindCallback<ParseObject>() {
                 @Override
                 public void done(List<ParseObject> objects, ParseException e) {
-                    objects.contains("area");
+                    objects.contains("address");
                     Log.i("sad ",objects.toString());
                     check[0] =objects.toString();
                 }
             });
-            if ( check[1] ==null) {
+            if ( check[0] ==null) {
                 Intent intent = new Intent(getContext(), User_address.class);
                 startActivity(intent);
             }else{
