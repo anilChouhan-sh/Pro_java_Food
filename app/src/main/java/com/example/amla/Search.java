@@ -12,7 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Search extends Fragment   {
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Search extends Fragment  {
 
    /* SearchView search ;
     Button desert , lunch , dinner , snack ;
@@ -54,7 +57,11 @@ public class Search extends Fragment   {
     RecyclerView recyclerView ;
     RecyclerView.LayoutManager layoutManager ;
     Button placeorder ;
+    ArrayList<HashMap<String , String>> list_of_food_incart = new ArrayList<HashMap<String , String>> ();
 
+    interface cart_list{
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,12 +73,6 @@ public class Search extends Fragment   {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
-   /* LayoutInflater x = new LayoutInflater(view.) {
-        @Override
-        public LayoutInflater cloneInContext(Context newContext) {
-            return null;
-        }
-    };*/
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -80,7 +81,9 @@ public class Search extends Fragment   {
 
         placeorder = view.findViewById(R.id.placeorder);
 
-        Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() );
+
+
+        Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() , list_of_food_incart);
         recyclerView.setAdapter(adapter);
 
     }

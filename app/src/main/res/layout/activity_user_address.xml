@@ -54,7 +54,7 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onsave"
+        android:onClick="onClick"
         android:paddingTop="30dp"
         android:text="Save"
         android:textSize="22sp" />

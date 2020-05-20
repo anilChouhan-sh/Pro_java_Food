@@ -9,15 +9,20 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_cart.Viewholder>{
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_cart.Viewholder> {
 
 
         private Context con  ;
-       // ArrayList<String> s ;
-    public Recycle_adapter_cart(Context con) {
+        private ArrayList<HashMap<String , String>> list_of_food = new ArrayList<HashMap <String , String> >();
+
+
+    public Recycle_adapter_cart(Context con ,  ArrayList<HashMap<String , String>> list_of_food) {
 
         this.con = con;
-        //this.s = s;
+        this.list_of_food = list_of_food;
     }
 
     @NonNull
@@ -32,9 +37,15 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
         int i = position ;
-        holder.food_price.setText(String.valueOf(i*6));
-        holder.food_quantity.setText(String.valueOf(i+3));
-        holder.food_name.setText(String.valueOf(i));
+
+        HashMap <String ,String> hash = list_of_food.get(position);
+
+
+        holder.food_price.setText("Rs. " + hash.get("Food_price"));
+        holder.food_quantity.setText("Qy. " + hash.get("Food_quantity"));
+        holder.food_name.setText(hash.get("Food_name"));
+
+
     }
 
     @Override

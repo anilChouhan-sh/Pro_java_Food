@@ -15,12 +15,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapter_foodlist.Viewholder_food> implements View.OnClickListener {
+public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapter_foodlist.Viewholder_food> {
 
    private Context con;
    private ArrayList<HashMap<String , String>> list_of_food = new ArrayList<HashMap <String , String> >();
    private int position =0;
-    public Recycle_adapter_foodlist(Context con , ArrayList<HashMap<String , String>> list_of_food ){
+
+
+
+
+   public Recycle_adapter_foodlist(Context con , ArrayList<HashMap<String , String>> list_of_food ){
     this.con =con;
     this.list_of_food = list_of_food ;
     }
@@ -36,25 +40,32 @@ public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapt
     }
 
     @Override
-    public void onBindViewHolder(@NonNull Viewholder_food holder, int position) {
+    public void onBindViewHolder(@NonNull Viewholder_food holder, final int position) {
 
-       HashMap<String ,String> hash =  list_of_food.get(position);
+       final HashMap<String ,String> hash =  list_of_food.get(position);
 
 
         holder.name_food.setText(hash.get("Food_name"));
         holder.price_food.setText(hash.get("Food_price"));
+        holder.im.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fun(hash , v);
+            }
+        });
 
-        this.position =position;
+    }
+
+    public  void fun(HashMap<String ,String> hash , View v){
+
+
+
+        Toast.makeText( v.getContext() , String.valueOf(position) , Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public int getItemCount() {
         return list_of_food.size();
-    }
-
-    @Override
-    public void onClick(View v) {
-        Toast.makeText(v.getContext() , String.valueOf(position) , Toast.LENGTH_SHORT).show();
     }
 
     final ArrayList<HashMap <String , String> > list_of_foods = new ArrayList<HashMap <String , String> >();
@@ -66,9 +77,6 @@ public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapt
             im = itemView.findViewById(R.id.plus);
             name_food = itemView.findViewById(R.id.name_food);
             price_food = itemView.findViewById(R.id.price_food);
-            im.setOnClickListener(Recycle_adapter_foodlist.this);
-
-
         }
     }
 }
