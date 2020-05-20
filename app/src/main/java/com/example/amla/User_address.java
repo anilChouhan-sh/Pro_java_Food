@@ -10,14 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
-
-import java.util.List;
 
 public class User_address extends AppCompatActivity implements View.OnClickListener {
 
@@ -32,7 +28,7 @@ public class User_address extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_address);
-        button =findViewById(R.id.button);
+        button =findViewById(R.id.home);
         Intent intent =getIntent();
         this.user = intent.getStringExtra("username");
         Log.i("username",user);
