@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity implements  View.OnClickList
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Parse.enableLocalDatastore(this);
+        //Parse.enableLocalDatastore(this);
 
         Parse.initialize(new Parse.Configuration.Builder(getApplicationContext())
                 .applicationId("myappID")

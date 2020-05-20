@@ -12,13 +12,24 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
+import java.util.List;
 
 
 public class MyProfile extends Fragment implements View.OnClickListener {
 
 
         LinearLayout address_layout  ,logout_layout  ,past_order;
+        TextView name;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,6 +45,8 @@ public class MyProfile extends Fragment implements View.OnClickListener {
             address_layout = view.findViewById(R.id.linearLayout_2);
             logout_layout =view.findViewById(R.id.linearLayout_logout);
             past_order =view.findViewById(R.id.linearLayout_1);
+            name= view.findViewById(R.id.name);
+            name.setText(ParseUser.getCurrentUser().getUsername());
 
 
             past_order.setOnClickListener(this);
@@ -45,17 +58,34 @@ public class MyProfile extends Fragment implements View.OnClickListener {
    @Override
     public void onClick(View v) {
 
-
+       final String[] check = new String[1];
         if (v.getId() == R.id.linearLayout_2)
         {
-            Intent intent = new Intent(getContext(), User_address.class);
-            startActivity(intent);
+            ParseQuery<ParseObject> query1 = new ParseQuery<ParseObject>("user");
+            query1.findInBackground(new FindCallback<ParseObject>() {
+                @Override
+                public void done(List<ParseObject> objects, ParseException e) {
+                    objects.contains("area");
+                    Log.i("sad ",objects.toString());
+                    check[0] =objects.toString();
+                }
+            });
+            if ( check[1] ==null) {
+                Intent intent = new Intent(getContext(), User_address.class);
+                startActivity(intent);
+            }else{
+                Log.i("abc","abc");
+            }
+
+
             //adress
         }
 
        if (v.getId() == R.id.linearLayout_logout)
        {
-
+           ParseUser.logOut();
+           Intent it = new Intent(getContext(),MainActivity.class);
+           startActivity(it);
            //logout
        }
 
