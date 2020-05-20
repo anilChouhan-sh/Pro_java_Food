@@ -8,10 +8,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
 public class User_address extends AppCompatActivity {
 
@@ -29,6 +32,14 @@ public class User_address extends AppCompatActivity {
         saving.put("state",state.getText().toString());
         saving.put("mobileNumber",mobile_number.getText().toString());
         saving.put("pincode",pincode.getText().toString());
+        saving.saveInBackground(new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    Toast.makeText(User_address.this,"Address saved",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     @Override
