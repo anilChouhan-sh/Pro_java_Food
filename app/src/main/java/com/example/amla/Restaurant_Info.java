@@ -34,11 +34,11 @@ import java.util.List;
 import bolts.Task;
 
 
-public class Restaurant_Info extends AppCompatActivity {
+public class Restaurant_Info extends AppCompatActivity  {
 
     RecyclerView recyclerView;
     RecyclerView.LayoutManager layoutManager;
-
+    ArrayList<HashMap<String , String>> list_of_food_incart = null ;
     ImageView imageView;
     TextView view_resto_name;
     String owner2 ="Lakshay";
@@ -121,19 +121,8 @@ public class Restaurant_Info extends AppCompatActivity {
                 }
             }
         });
-
-
-
-
-
-
-
-
-
-
-
-
     }
+
 
 }
 

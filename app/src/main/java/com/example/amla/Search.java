@@ -1,10 +1,12 @@
 package com.example.amla;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,10 +14,16 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
-public class Search extends Fragment  {
+public class Search extends Fragment {
 
    /* SearchView search ;
     Button desert , lunch , dinner , snack ;
@@ -54,14 +62,18 @@ public class Search extends Fragment  {
 
     }*/
 
+
+
+
+
     RecyclerView recyclerView ;
     RecyclerView.LayoutManager layoutManager ;
     Button placeorder ;
-    ArrayList<HashMap<String , String>> list_of_food_incart = new ArrayList<HashMap<String , String>> ();
 
-    interface cart_list{
+    ArrayList<HashMap<String , String>> list_of_food_incart =null ;
 
-    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -81,10 +93,38 @@ public class Search extends Fragment  {
 
         placeorder = view.findViewById(R.id.placeorder);
 
+         list_of_food_incart = new ArrayList<HashMap<String, String>>() ;
+        final Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() , list_of_food_incart);
 
 
-        Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() , list_of_food_incart);
-        recyclerView.setAdapter(adapter);
 
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Cart");
+        query.findInBackground(new FindCallback<ParseObject>() {
+            public void done(List<ParseObject> objects, ParseException e) {
+                if (e == null) {
+                    if(objects.size()>0) {
+                        for(ParseObject object : objects) {
+
+                            HashMap<String ,String > hash = new HashMap<String, String>() ;
+                            hash.put("Food_name" , object.getString("Food_name") );
+                            hash.put("Food_price" , String.valueOf(object.getNumber("Food_price")));
+                            Search.this.list_of_food_incart.add(hash);
+                        }
+                        recyclerView.setAdapter(adapter);
+
+                    }
+                    else {Log.i("parse exception 1" , "NO     OBJECT");}
+                }
+                else {Log.i("parse exception " , e.getMessage());
+                }
+            }
+        });
+
+        Log.i("nwetrew" ,"efwfe");
+       //ArrayList x = adapter.list_of_food;
+        Toast.makeText(getContext() , String.valueOf(this.list_of_food_incart) , Toast.LENGTH_LONG).show();
     }
+
+
+
 }

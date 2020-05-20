@@ -12,8 +12,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.parse.FindCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapter_foodlist.Viewholder_food> {
 
@@ -27,6 +34,7 @@ public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapt
    public Recycle_adapter_foodlist(Context con , ArrayList<HashMap<String , String>> list_of_food ){
     this.con =con;
     this.list_of_food = list_of_food ;
+
     }
 
     @NonNull
@@ -56,12 +64,15 @@ public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapt
 
     }
 
-    public  void fun(HashMap<String ,String> hash , View v){
+        public  void fun(final HashMap<String ,String> hash , View v){
 
+            ParseObject  cart = new ParseObject("Cart");
+            cart.put("Food_name" , hash.get("Food_name"));
+            cart.put("Food_price" , Integer.valueOf(hash.get("Food_price")));
+            cart.saveInBackground();
 
-
-        Toast.makeText( v.getContext() , String.valueOf(position) , Toast.LENGTH_SHORT).show();
-    }
+            Toast.makeText( v.getContext() , String.valueOf(position) , Toast.LENGTH_SHORT).show();
+        }
 
     @Override
     public int getItemCount() {
