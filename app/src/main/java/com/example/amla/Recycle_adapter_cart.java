@@ -25,14 +25,14 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
 
 
         private Context con  ;
-         ArrayList<HashMap<String , String>> list_of_food = new ArrayList<HashMap <String , String> >();
+        // ArrayList<HashMap<String , String>> list_of_food = new ArrayList<HashMap <String , String> >();
 
-        HashMap<String ,Integer> qauntity =new HashMap<String, Integer>();
+    HashMap<String ,Integer> list_of_food =new HashMap<String, Integer>();
         Iterator hmIterator ;
 
 
-       public Recycle_adapter_cart(Context con ,  ArrayList<HashMap<String , String>> list_of_food) {
-        this.list_of_food =list_of_food;
+       public Recycle_adapter_cart(Context con ,  HashMap<String ,Integer> qauntity) {
+        this.list_of_food =qauntity;
         this.con = con;
        // ArrayList<HashMap<String , String>> list = new ArrayList<HashMap <String , String> >();
          this.hmIterator = qauntity.entrySet().iterator();
@@ -42,27 +42,7 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
 
     void fun()
     {
-        int i;
-        for(HashMap<String ,String> p: this.list_of_food)
-        {
-            Log.i("hello" , "helllo");
-            this.qauntity.put("Daal" , 12) ;
-        }
 
-
-        for (HashMap<String ,String> h : list_of_food )
-        {
-            String name = h.get("Food_name");
-            boolean flag = false;
-                for(HashMap<String,String> x : list_of_food){
-                    if(x.containsValue(name) && flag)
-                    {
-                        flag =true;
-                        int temp = qauntity.get(name);
-                        qauntity.put(name , temp+1);
-                    }
-                }
-        }
 
     }
 

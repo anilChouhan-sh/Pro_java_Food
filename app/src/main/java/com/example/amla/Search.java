@@ -19,9 +19,12 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.sql.CallableStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import bolts.Task;
 
 public class Search extends Fragment {
 
@@ -74,7 +77,8 @@ public class Search extends Fragment {
 
 
 
-
+    String x = "Hello";
+    tp s = new tp(x);
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -94,7 +98,8 @@ public class Search extends Fragment {
         placeorder = view.findViewById(R.id.placeorder);
 
          list_of_food_incart = new ArrayList<HashMap<String, String>>() ;
-        final Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() , list_of_food_incart);
+        final HashMap<String ,Integer> qauntity =new HashMap<String, Integer>();
+        final Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() , qauntity);
 
 
 
@@ -110,8 +115,27 @@ public class Search extends Fragment {
                             hash.put("Food_price" , String.valueOf(object.getNumber("Food_price")));
                             Search.this.list_of_food_incart.add(hash);
                         }
-                        recyclerView.setAdapter(adapter);
 
+
+
+                        for(HashMap<String ,String> p: list_of_food_incart)
+                        {
+                            if(! qauntity.containsKey(p.get("Food_name"))){
+                                qauntity.put(p.get("Food_name") , 0);
+                            }
+                            else{
+                                Log.i("mymymyymchanges" , "NOt Found");
+                            }
+                        }
+
+
+                        for (HashMap<String ,String> h : list_of_food_incart )
+                        {
+                            String name = h.get("Food_name");
+                                    int temp = qauntity.get(name);
+                                    qauntity.put(name , temp+1);
+                        }
+                        recyclerView.setAdapter(adapter);
                     }
                     else {Log.i("parse exception 1" , "NO     OBJECT");}
                 }
@@ -119,16 +143,16 @@ public class Search extends Fragment {
                 }
             }
         });
-       List<ParseObject> x;
-        try {
-            x=query.find();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        Log.i("nwetrew" ,"efwfe");
+
+
+
+
+
        //ArrayList x = adapter.list_of_food;
-        Toast.makeText(getContext() , String.valueOf(this.list_of_food_incart) , Toast.LENGTH_LONG).show();
+        Toast.makeText(getContext() , String.valueOf(s.getX()) , Toast.LENGTH_LONG).show();
     }
+
+
 
 
 
