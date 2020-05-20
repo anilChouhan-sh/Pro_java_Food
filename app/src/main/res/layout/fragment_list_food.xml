@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/design_default_color_background"
+    android:background="@android:color/darker_gray"
     tools:context=".ListFood">
 
     <TextView
@@ -29,15 +29,32 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="77dp"
+        android:layout_marginBottom="102dp"
+        android:text='"MORE RESTAURANTS COMMING SOON"'
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview" />
+
     <ListView
         android:id="@+id/listview"
         android:layout_width="351dp"
-        android:layout_height="466dp"
+        android:layout_height="351dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="@android:color/darker_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.788" />
+        app:layout_constraintVertical_bias="0.345">
+
+    </ListView>
 </androidx.constraintlayout.widget.ConstraintLayout>

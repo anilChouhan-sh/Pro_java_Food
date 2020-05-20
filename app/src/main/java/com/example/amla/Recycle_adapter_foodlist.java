@@ -55,6 +55,7 @@ public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapt
         if (hash.get("Food_type").equals("Dinner" ))
         {
             Log.i(hash.get("Food_name") ,"dfsdfsdffs");
+
         }
 
 

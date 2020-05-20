@@ -15,11 +15,6 @@
         android:icon="@drawable/ic_home_black_24dp"/>
     <item
         android:id="@+id/searchs"
-        android:icon="@drawable/ic_search_black_24dp"
-        android:title="Search" />
-    <item
-        android:id="@+id/maincart"
         android:icon="@drawable/ic_shopping_cart_black_24dp"
-        android:title="Cart"
-        />
+        android:title="Cart" />
 </menu>
