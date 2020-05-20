@@ -60,7 +60,7 @@ public class User_address extends AppCompatActivity implements View.OnClickListe
         int i=0;
         //query.whereEqualTo("username" , "food");
         if(i==0) {
-            ParseObject saving = new ParseObject("info");
+            ParseObject saving = new ParseObject("Address");
             saving.put("username", ParseUser.getCurrentUser().getUsername());
             saving.put("address", area.getText().toString());
             saving.put("city", city.getText().toString());
