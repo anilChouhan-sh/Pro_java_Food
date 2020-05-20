@@ -25,7 +25,7 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
 
 
         private Context con  ;
-        // ArrayList<HashMap<String , String>> list_of_food = new ArrayList<HashMap <String , String> >();
+
 
     HashMap<String ,Integer> list_of_food =new HashMap<String, Integer>();
         Iterator hmIterator ;
@@ -34,17 +34,11 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
        public Recycle_adapter_cart(Context con ,  HashMap<String ,Integer> qauntity) {
         this.list_of_food =qauntity;
         this.con = con;
-       // ArrayList<HashMap<String , String>> list = new ArrayList<HashMap <String , String> >();
-         this.hmIterator = qauntity.entrySet().iterator();
+        this.hmIterator = qauntity.entrySet().iterator();
 
     }
 
 
-    void fun()
-    {
-
-
-    }
 
 
     @NonNull
@@ -53,7 +47,7 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
         LayoutInflater inflater = LayoutInflater.from(con);
         View view = inflater.inflate(R.layout.cart_items_layout , null) ;
         Viewholder holder = new Viewholder(view);
-        fun();
+
         return holder;
     }
 

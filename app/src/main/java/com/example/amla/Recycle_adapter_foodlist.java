@@ -1,6 +1,7 @@
 package com.example.amla;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,11 +52,20 @@ public class Recycle_adapter_foodlist extends RecyclerView.Adapter<Recycle_adapt
     public void onBindViewHolder(@NonNull Viewholder_food holder, final int position) {
 
        final HashMap<String ,String> hash =  list_of_food.get(position);
+        if (hash.get("Food_type").equals("Dinner" ))
+        {
+            Log.i(hash.get("Food_name") ,"dfsdfsdffs");
+        }
+
 
 
         holder.name_food.setText(hash.get("Food_name"));
         holder.price_food.setText(hash.get("Food_price"));
+
+
+
         holder.im.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 fun(hash , v);

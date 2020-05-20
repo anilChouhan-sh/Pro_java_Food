@@ -86,9 +86,7 @@ public class Restaurant_Info extends AppCompatActivity  {
             }
         });
 
-         //  c.getOwner("hello");
-          //  Log.i("owneeeee" , owner2);
-          //  ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("Restaurants")
+
 
 
         recyclerView = findViewById(R.id.recycle_foodlist);
@@ -110,7 +108,7 @@ public class Restaurant_Info extends AppCompatActivity  {
                             HashMap<String ,String > hash = new HashMap<String, String>() ;
                             hash.put("Food_name" , object.getString("Name") );
                             hash.put("Food_price" , String.valueOf(object.getNumber("Food_price")));
-
+                            hash.put("Food_type" ,object.getString("Food_type"));
                             list_of_food.add(hash);
                         }
                         recyclerView.setAdapter(adapter);

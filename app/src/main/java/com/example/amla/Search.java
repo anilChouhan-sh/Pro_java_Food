@@ -121,7 +121,7 @@ public class Search extends Fragment {
                         for(HashMap<String ,String> p: list_of_food_incart)
                         {
                             if(! qauntity.containsKey(p.get("Food_name"))){
-                                qauntity.put(p.get("Food_name") , 0);
+                                qauntity.put(  p.get("Food_name") + "/" + p.get("Food_price") , 0);
                             }
                             else{
                                 Log.i("mymymyymchanges" , "NOt Found");
@@ -131,7 +131,7 @@ public class Search extends Fragment {
 
                         for (HashMap<String ,String> h : list_of_food_incart )
                         {
-                            String name = h.get("Food_name");
+                            String name = h.get("Food_name") + "/" + h.get("Food_price");
                                     int temp = qauntity.get(name);
                                     qauntity.put(name , temp+1);
                         }
