@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,46 +33,6 @@ import bolts.Task;
 
 public class Search extends Fragment {
 
-   /* SearchView search ;
-    Button desert , lunch , dinner , snack ;
-
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_search, container, false);
-    }
-
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        SearchView s = ( SearchView )view.findViewById(R.id.searchs);
-
-
-        s.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-
-
-                return false;
-            }
-        });
-
-    }*/
-
-
-
-
 
     RecyclerView recyclerView ;
     RecyclerView.LayoutManager layoutManager ;
@@ -79,10 +40,10 @@ public class Search extends Fragment {
 
     ArrayList<HashMap<String , String>> list_of_food_incart =null ;
 
-
+        TextView cart_total;
 
     String x = "Hello";
-    tp s = new tp(x);
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -98,7 +59,7 @@ public class Search extends Fragment {
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
-
+        cart_total= view.findViewById(R.id.cart_total);
         placeorder = view.findViewById(R.id.placeorder);
 
         placeorder.setOnClickListener(new View.OnClickListener() {
@@ -149,7 +110,7 @@ public class Search extends Fragment {
                                     int temp = qauntity.get(name);
                                     qauntity.put(name , temp+1);
                         }
-
+                            int total =0;
                         Iterator entries = qauntity.entrySet().iterator();
                         while (entries.hasNext()) {
                             HashMap<String ,String> temp =new HashMap<String, String>();
@@ -162,9 +123,10 @@ public class Search extends Fragment {
                              temp.put("Food_name", array[0]);
                              temp.put("Food_quantity" , String.valueOf(value)) ;
                              temp.put("Food_price" , String.valueOf(value*price));
-
+                             total = total+ value*price;
                              final_list.add(temp);
                         }
+                        cart_total.setText("Total: Rs."+String.valueOf(total));
                         recyclerView.setAdapter(adapter);
                     }
                     else {Log.i("parse exception 1" , "NO     OBJECT");}
@@ -179,7 +141,7 @@ public class Search extends Fragment {
 
 
        //ArrayList x = adapter.list_of_food;
-        Toast.makeText(getContext() , String.valueOf(s.getX()) , Toast.LENGTH_LONG).show();
+
     }
 
 

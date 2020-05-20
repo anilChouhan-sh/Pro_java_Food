@@ -54,8 +54,8 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
         HashMap<String ,String> temp = final_list.get(position);
 
         holder.food_name.setText(temp.get("Food_name"));
-        holder.food_price.setText(temp.get("Food_price"));
-        holder.food_quantity.setText(temp.get("Food_quantity"));
+        holder.food_price.setText("Rs. "+temp.get("Food_price"));
+        holder.food_quantity.setText("X " +temp.get("Food_quantity"));
 
     }
 

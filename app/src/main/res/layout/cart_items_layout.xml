@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="15dp"
-    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="#00BCD4"
 
-    >
+    app:cardUseCompatPadding="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_blue_dark"
+        android:background="@android:color/transparent"
         android:padding="8dp">
 
         <TextView
             android:id="@+id/cart_product_name"
-            android:layout_width="160dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:text="Product Name"
             android:textColor="@android:color/black"
-            android:textSize="14dp"
+            android:textSize="25dp"
             android:textStyle="bold" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:gravity="right"
             android:text="Product Qauntity"
             android:textColor="@android:color/black"
-            android:textSize="14dp"
+            android:textSize="18dp"
             android:textStyle="bold" />
 
 
@@ -42,12 +42,12 @@
             android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/cart_product_name"
-            android:layout_centerHorizontal="true"
+            android:layout_centerHorizontal="false"
             android:layout_marginTop="10dp"
-            android:gravity="center"
+            android:gravity="left"
             android:text="Product Price"
             android:textColor="@android:color/black"
-            android:textSize="14dp"
+            android:textSize="16dp"
             android:textStyle="bold" />
 
     </RelativeLayout>

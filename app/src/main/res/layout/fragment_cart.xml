@@ -25,6 +25,7 @@
             android:gravity="center_horizontal"
             android:layout_below="@android:id/title"
             android:text="Your Cart"
+            android:textColor="@android:color/black"
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -49,14 +50,26 @@
         android:orientation="vertical"
         android:layout_marginTop="20dp">
 
+        <TextView
+            android:id="@+id/cart_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="0dp"
+            android:textSize="30sp"
+            android:text="CART TOTAL" />
+
         <Button
             android:id="@+id/placeorder"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginRight="40dp"
-
-            android:onClick="onClick"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="05dp"
+            android:layout_below="@+id/cart_total"
+            android:clickable="false"
             android:text="Place Your Order"
             android:textStyle="bold" />
     </RelativeLayout>
