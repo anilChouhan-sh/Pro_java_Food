@@ -8,6 +8,7 @@
     tools:context=".payment">
 
     <com.braintreepayments.cardform.view.CardForm
+        android:id="@+id/cardform"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

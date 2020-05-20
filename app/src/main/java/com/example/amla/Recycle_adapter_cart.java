@@ -27,15 +27,13 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
         private Context con  ;
 
 
-    HashMap<String ,Integer> list_of_food =new HashMap<String, Integer>();
-        Iterator hmIterator ;
+      private   ArrayList<HashMap<String ,String>> final_list ;
 
 
-       public Recycle_adapter_cart(Context con ,  HashMap<String ,Integer> qauntity) {
-        this.list_of_food =qauntity;
+
+       public Recycle_adapter_cart(Context con ,  ArrayList<HashMap<String ,String>> list_of_food ) {
+        this.final_list =list_of_food;
         this.con = con;
-        this.hmIterator = qauntity.entrySet().iterator();
-
     }
 
 
@@ -47,18 +45,17 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
         LayoutInflater inflater = LayoutInflater.from(con);
         View view = inflater.inflate(R.layout.cart_items_layout , null) ;
         Viewholder holder = new Viewholder(view);
-
         return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull Viewholder holder, int position) {
 
-       // Map.Entry mapElement = (Map.Entry)hmIterator.next();
+        HashMap<String ,String> temp = final_list.get(position);
 
-        holder.food_name.setText(String.valueOf(list_of_food));
-        holder.food_price.setText(String.valueOf(list_of_food.get(0)));
-        holder.food_quantity.setText(String.valueOf(300));
+        holder.food_name.setText(temp.get("Food_name"));
+        holder.food_price.setText(temp.get("Food_price"));
+        holder.food_quantity.setText(temp.get("Food_quantity"));
 
     }
 
@@ -66,7 +63,7 @@ public class Recycle_adapter_cart extends RecyclerView.Adapter<Recycle_adapter_c
     public int getItemCount() {
 
 
-        return list_of_food.size()  ;
+        return final_list.size()  ;
     }
 
     protected  class Viewholder  extends RecyclerView.ViewHolder{

@@ -1,5 +1,6 @@
 package com.example.amla;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,10 +20,13 @@ import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
+import java.sql.Array;
 import java.sql.CallableStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import bolts.Task;
 
@@ -97,9 +101,19 @@ public class Search extends Fragment {
 
         placeorder = view.findViewById(R.id.placeorder);
 
+        placeorder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(),payment.class);
+                startActivity(intent);
+            }
+        });
+
          list_of_food_incart = new ArrayList<HashMap<String, String>>() ;
+
         final HashMap<String ,Integer> qauntity =new HashMap<String, Integer>();
-        final Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() , qauntity);
+        final ArrayList<HashMap<String ,String>> final_list =new ArrayList<HashMap<String, String>>();
+        final Recycle_adapter_cart adapter = new Recycle_adapter_cart(view.getContext() , final_list);
 
 
 
@@ -134,6 +148,22 @@ public class Search extends Fragment {
                             String name = h.get("Food_name") + "/" + h.get("Food_price");
                                     int temp = qauntity.get(name);
                                     qauntity.put(name , temp+1);
+                        }
+
+                        Iterator entries = qauntity.entrySet().iterator();
+                        while (entries.hasNext()) {
+                            HashMap<String ,String> temp =new HashMap<String, String>();
+                            Map.Entry entry = (Map.Entry) entries.next();
+                            String key = (String) entry.getKey();
+                            Integer value = (Integer)entry.getValue();
+                            String [] array = key.split("/");
+                            Integer price = Integer.valueOf(array[1]);
+
+                             temp.put("Food_name", array[0]);
+                             temp.put("Food_quantity" , String.valueOf(value)) ;
+                             temp.put("Food_price" , String.valueOf(value*price));
+
+                             final_list.add(temp);
                         }
                         recyclerView.setAdapter(adapter);
                     }

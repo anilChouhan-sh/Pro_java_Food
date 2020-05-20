@@ -25,7 +25,7 @@ public class payment extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-        @SuppressLint("CutPasteId") final CardForm card = findViewById(R.id.pay_now);
+        @SuppressLint("CutPasteId") final CardForm card = findViewById(R.id.cardform);
         paynow = findViewById(R.id.pay_now);
 
         card.cardRequired(true)
